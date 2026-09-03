@@ -73,17 +73,21 @@ export async function createMcpServer(context: ToolContext): Promise<McpServer> 
   return server;
 }
 
+export async function startMcpServer(context: ToolContext): Promise<void> {
+  const server = await createMcpServer(context);
+  await server.connect(new StdioServerTransport());
+}
+
 async function main(): Promise<void> {
   const workspace = process.env.MERGEPILOT_WORKSPACE;
   const manifestPath = process.env.MERGEPILOT_MANIFEST;
   if (!workspace || !manifestPath) throw new Error("MERGEPILOT_WORKSPACE and MERGEPILOT_MANIFEST are required");
   const manifest = await loadCapabilityManifest(manifestPath);
-  const server = await createMcpServer({
+  await startMcpServer({
     workspace,
     manifest,
     secrets: (process.env.MERGEPILOT_SECRETS ?? "").split(",").filter(Boolean),
   });
-  await server.connect(new StdioServerTransport());
 }
 
 const entryPath = process.argv[1]?.replaceAll("\\", "/");

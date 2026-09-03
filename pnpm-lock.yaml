@@ -62,6 +62,22 @@ importers:
         specifier: 26.4.1
         version: 26.4.1
 
+  apps/runner:
+    dependencies:
+      '@mergepilot/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
+      '@mergepilot/policy':
+        specifier: workspace:*
+        version: link:../../packages/policy
+      '@modelcontextprotocol/sdk':
+        specifier: 1.30.0
+        version: 1.30.0(zod@4.5.4)
+    devDependencies:
+      '@types/node':
+        specifier: 26.4.1
+        version: 26.4.1
+
   packages/contracts:
     dependencies:
       zod:
