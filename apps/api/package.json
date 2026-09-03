@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@mergepilot/contracts": "workspace:*",
+    "openai": "7.9.0",
     "pg": "8.23.0",
     "zod": "4.5.4"
   },
   "devDependencies": {
+    "@mergepilot/test-fixtures": "workspace:*",
     "@types/node": "26.4.1",
     "@types/pg": "8.15.6"
   }

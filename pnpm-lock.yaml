@@ -29,6 +29,9 @@ importers:
       '@mergepilot/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      openai:
+        specifier: 7.9.0
+        version: 7.9.0(zod@4.5.4)
       pg:
         specifier: 8.23.0
         version: 8.23.0
@@ -36,6 +39,9 @@ importers:
         specifier: 4.5.4
         version: 4.5.4
     devDependencies:
+      '@mergepilot/test-fixtures':
+        specifier: workspace:*
+        version: link:../../packages/test-fixtures
       '@types/node':
         specifier: 26.4.1
         version: 26.4.1
@@ -99,6 +105,12 @@ importers:
       '@types/node':
         specifier: 26.4.1
         version: 26.4.1
+
+  packages/test-fixtures:
+    dependencies:
+      '@mergepilot/contracts':
+        specifier: workspace:*
+        version: link:../contracts
 
 packages:
 
@@ -1052,6 +1064,30 @@ packages:
 
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
+
+  openai@7.9.0:
+    resolution: {integrity: sha512-Qfx4qKmPllnilbuP6NgEj5KPUxLShYxrlRPWh3ZRQgNgs5B1V52PrfAdEQbW9MTGq7MquDYFMm+K/KXxiY736w==}
+    engines: {node: '>=22.0.0'}
+    peerDependencies:
+      '@aws-sdk/credential-provider-node': '>=3.972.0 <4'
+      '@smithy/hash-node': '>=4.3.0 <5'
+      '@smithy/signature-v4': '>=5.4.0 <6'
+      undici: '>=5 <9'
+      ws: ^8.21.0
+      zod: ^3.25 || ^4.0
+    peerDependenciesMeta:
+      '@aws-sdk/credential-provider-node':
+        optional: true
+      '@smithy/hash-node':
+        optional: true
+      '@smithy/signature-v4':
+        optional: true
+      undici:
+        optional: true
+      ws:
+        optional: true
+      zod:
+        optional: true
 
   oxlint@1.81.0:
     resolution: {integrity: sha512-HyrJYqeoOCL0iqaLEzGewGT48ZX99P3hxYh8udAF9RGGIghSamkXE4ClUyBpEDNqasamThgmlPbuMOe7SAZmHg==}
@@ -2094,6 +2130,10 @@ snapshots:
   once@1.4.0:
     dependencies:
       wrappy: 1.0.2
+
+  openai@7.9.0(zod@4.5.4):
+    optionalDependencies:
+      zod: 4.5.4
 
   oxlint@1.81.0:
     optionalDependencies:
