@@ -155,6 +155,11 @@ export class PostgresRepository implements MergePilotRepository {
     return result.rows[0]?.payload ?? null;
   }
 
+  async listRuns(taskId: string): Promise<Run[]> {
+    const result = await this.pool.query<PayloadRow<Run>>("select payload from runs where task_id=$1 order by (payload->>'attempt')::int", [taskId]);
+    return result.rows.map((row) => row.payload);
+  }
+
   async recordToolCall(call: ToolCall): Promise<ToolCall> {
     await this.pool.query("insert into tool_calls(id,run_id,ordinal,payload) values($1,$2,$3,$4) on conflict(id) do nothing", [call.id, call.runId, call.ordinal, call]);
     return call;

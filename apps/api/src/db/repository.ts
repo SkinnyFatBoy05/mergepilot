@@ -31,6 +31,7 @@ export interface MergePilotRepository {
   createRun(taskId: string, expectedVersion: number, idempotencyKey: string, actor: Actor): Promise<Run>;
   updateRun(run: Run, actor: Actor): Promise<Run>;
   getRun(runId: string): Promise<Run | null>;
+  listRuns(taskId: string): Promise<Run[]>;
   recordToolCall(call: ToolCall): Promise<ToolCall>;
   savePatch(runId: string, patch: Patch, actor: Actor): Promise<StoredArtifact<Patch>>;
   getPatch(runId: string): Promise<StoredArtifact<Patch> | null>;

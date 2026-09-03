@@ -155,6 +155,10 @@ export class MemoryRepository implements MergePilotRepository {
     return run ? clone(run) : null;
   }
 
+  async listRuns(taskId: string): Promise<Run[]> {
+    return [...this.runs.values()].filter((run) => run.taskId === taskId).sort((a, b) => a.attempt - b.attempt).map(clone);
+  }
+
   async recordToolCall(call: ToolCall): Promise<ToolCall> {
     this.toolCalls.set(call.id, clone(call));
     const run = this.requireRun(call.runId);

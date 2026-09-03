@@ -16,6 +16,7 @@ export const recordedSuccessfulRun: RecordedProviderSequence = {
     { type: "tool_call", tool: "read_file", arguments: { path: "src/worker.ts" } },
     { type: "tool_call", tool: "apply_patch", arguments: { patch: "recorded-fixture-patch" } },
     { type: "tool_call", tool: "run_check", arguments: { checkId: "unit" } },
+    { type: "tool_call", tool: "get_diff", arguments: {} },
     { type: "complete", summary: "The worker now claims delivery IDs before dispatch." },
   ],
   critique: {
