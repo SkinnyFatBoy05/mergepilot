@@ -15,7 +15,7 @@ async function main() {
   const outputIndex = process.argv.indexOf("--output"); const output = resolve(outputIndex >= 0 ? process.argv[outputIndex + 1]! : "reports/benchmark.json");
   const measured: Record<string, ReturnType<typeof summarizeDurations>> = {};
   for (const [name, operation] of Object.entries(operations)) { for (let index = 0; index < 10; index++) operation(); const samples: number[] = []; for (let index = 0; index < 50; index++) { const start = performance.now(); operation(); samples.push(Math.round((performance.now() - start) * 1000) / 1000); } measured[name] = summarizeDurations(samples); }
-  const report = { schemaVersion: "1.0", generatedAt: new Date((Number(process.env.SOURCE_DATE_EPOCH) || Math.floor(Date.now() / 1000)) * 1_000).toISOString(), runtime: process.version, platform: process.platform, cpu: cpus()[0]?.model ?? "unknown", commit: process.env.GITHUB_SHA ?? "local-worktree", inputHash: sha256(patch), operations: measured, limitations: ["Local microbenchmark only; not throughput, availability, or a production SLA."] };
+  const report = { schemaVersion: "1.0", generatedAt: new Date((Number(process.env.SOURCE_DATE_EPOCH) || Math.floor(Date.now() / 1000)) * 1_000).toISOString(), runtime: process.version, platform: process.platform, cpu: cpus()[0]?.model ?? "unknown", commit: "source-controlled", inputHash: sha256(patch), operations: measured, limitations: ["Local microbenchmark only; not throughput, availability, or a production SLA."] };
   await mkdir(dirname(output), { recursive: true }); await writeFile(output, canonicalJson(report)); console.log(`Wrote ${Object.keys(measured).length} local benchmark measurements`);
 }
 if (import.meta.url === pathToFileURL(process.argv[1]!).href) await main();

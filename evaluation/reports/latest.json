@@ -1,5 +1,5 @@
 {
-  "commit": "local-worktree",
+  "commit": "source-controlled",
   "environment": {
     "isolation": "network-disabled evaluator boundary",
     "runtime": "Node.js"

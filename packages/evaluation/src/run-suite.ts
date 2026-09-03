@@ -64,7 +64,7 @@ export function runEvaluationSuite(provider = "recorded") {
     provider: { mode: "recorded", configuration: "checked-in deterministic transcripts" },
     generatedAt,
     environment: { runtime: "Node.js", isolation: "network-disabled evaluator boundary" },
-    commit: process.env.GITHUB_SHA ?? "local-worktree",
+    commit: "source-controlled",
     taskSetHash: sha256(canonicalJson(evaluationTasks)),
     totals: { tasks: results.length, expectedSuccesses: 9, expectedPolicyBlocks: 3 },
     metrics: calculateMetrics(results),

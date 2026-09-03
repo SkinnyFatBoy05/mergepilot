@@ -1,5 +1,5 @@
 {
-  "commit": "local-worktree",
+  "commit": "source-controlled",
   "cpu": "AMD Ryzen 7 6800H with Radeon Graphics         ",
   "generatedAt": "2026-09-03T00:00:00.000Z",
   "inputHash": "e115d3012bc8f41ab83106a2b8baea5f075e922e5aa15fc80b9eac8e183360eb",
@@ -8,13 +8,13 @@
   ],
   "operations": {
     "artifactHashing": {
-      "medianMs": 0.34,
-      "p95Ms": 0.548,
+      "medianMs": 0.307,
+      "p95Ms": 0.636,
       "samples": 50
     },
     "patchPolicy": {
-      "medianMs": 0.006,
-      "p95Ms": 0.011,
+      "medianMs": 0.007,
+      "p95Ms": 0.014,
       "samples": 50
     },
     "replayLoading": {
@@ -23,8 +23,8 @@
       "samples": 50
     },
     "reportSerialization": {
-      "medianMs": 0.222,
-      "p95Ms": 0.346,
+      "medianMs": 0.229,
+      "p95Ms": 0.335,
       "samples": 50
     }
   },
