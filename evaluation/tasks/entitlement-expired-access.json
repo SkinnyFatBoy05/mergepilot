@@ -1,0 +1,24 @@
+{
+  "allowedPaths": [
+    "src/**",
+    "test/**"
+  ],
+  "expectedOutcome": "success",
+  "fixtureId": "entitlement-service",
+  "hiddenOracleHash": "1cb964abbf2689ab615b572e06656b73da4ad61d4fae59bf2157c2f89b8d36b0",
+  "initialFixtureHash": "1ee13f12311d7ec737c200a19bee1dc19a1f59f7c986e9c55bfe8d14daa18d64",
+  "issue": "Reject expired access",
+  "protectedPrefixes": [
+    "evaluation/",
+    ".github/",
+    ".env"
+  ],
+  "recordingId": "entitlement-expired-access-recording",
+  "schemaVersion": "1.0",
+  "taskId": "entitlement-expired-access",
+  "trustedCheckIds": [
+    "unit",
+    "typecheck",
+    "policy"
+  ]
+}

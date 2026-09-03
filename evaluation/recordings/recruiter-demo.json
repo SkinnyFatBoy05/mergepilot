@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0",
+  "recordingId": "recruiter-demo",
+  "provider": "recorded",
+  "taskId": "entitlement-duplicate-grant",
+  "events": [
+    { "kind": "plan", "summary": "Add an atomic idempotency claim and concurrent duplicate coverage" },
+    { "kind": "policy", "outcome": "blocked", "reason": "protected path" },
+    { "kind": "patch", "outcome": "accepted", "paths": ["src/entitlements/service.ts"] },
+    { "kind": "checks", "outcome": "passed", "count": 12 }
+  ]
+}

@@ -5,14 +5,14 @@ import { buildServer } from "../src/http/server.js";
 import { MergePilotOrchestrator } from "../src/orchestration/orchestrator.js";
 import { RecordedProvider } from "../src/providers/recorded-provider.js";
 
-function harness() {
+function harness(replayOnly = false) {
   const repository = new MemoryRepository();
   const orchestrator = new MergePilotOrchestrator({
     repository,
     providerFactory: () => new RecordedProvider(recordedSuccessfulRun),
     sessionFactory: async () => ({ async call() { return {}; }, async close() {} }),
   });
-  return buildServer({ repository, orchestrator, adminToken: "test-admin-token", latestEvaluation: async () => ({ passRate: 1 }) });
+  return buildServer({ repository, orchestrator, adminToken: "test-admin-token", latestEvaluation: async () => ({ passRate: 1 }), replayOnly });
 }
 
 describe("control-plane HTTP API", () => {
@@ -35,6 +35,14 @@ describe("control-plane HTTP API", () => {
     expect(created.statusCode).toBe(201);
     const listed = await app.inject({ method: "GET", url: "/api/v1/tasks" });
     expect(listed.json()).toHaveLength(1);
+    await app.close();
+  });
+
+  it("rejects mutations in recorded replay mode even with a valid token", async () => {
+    const app = harness(true);
+    const response = await app.inject({ method: "POST", url: "/api/v1/tasks", headers: { authorization: "Bearer test-admin-token" }, payload: { issue: "This mutation must remain disabled", fixtureId: "webhook-worker", providerMode: "recorded" } });
+    expect(response.statusCode).toBe(403);
+    expect(response.json()).toMatchObject({ title: "Recorded replay is read-only" });
     await app.close();
   });
 

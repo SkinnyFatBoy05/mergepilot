@@ -12,7 +12,7 @@ RUN corepack enable && pnpm install --frozen-lockfile
 COPY apps/repo-mcp apps/repo-mcp
 COPY packages/contracts packages/contracts
 COPY packages/policy packages/policy
-COPY fixtures/visible fixtures/visible
+COPY fixtures fixtures/visible
 COPY deploy/runner-entrypoint.ts deploy/runner-entrypoint.ts
 
 USER 10001:10001

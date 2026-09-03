@@ -1,0 +1,24 @@
+{
+  "allowedPaths": [
+    "src/**",
+    "test/**"
+  ],
+  "expectedOutcome": "success",
+  "fixtureId": "react-access-console",
+  "hiddenOracleHash": "2cd7a0a8a4e84a0976c9bce6d5b3aa0a068ec23df8756224c1b2175be37b124d",
+  "initialFixtureHash": "439c15479262b6b6750e04dd8d4cc210774ecda30ab51223f0b6ac3cce9d3ffa",
+  "issue": "Ignore stale access responses",
+  "protectedPrefixes": [
+    "evaluation/",
+    ".github/",
+    ".env"
+  ],
+  "recordingId": "react-stale-request-recording",
+  "schemaVersion": "1.0",
+  "taskId": "react-stale-request",
+  "trustedCheckIds": [
+    "unit",
+    "typecheck",
+    "policy"
+  ]
+}

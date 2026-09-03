@@ -1,0 +1,19 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ink: #0b1526;
+  --slate: #667085;
+  --muted: #98a2b3;
+  --line: #d0d5dd;
+  --line-soft: #e4e7ec;
+  --canvas: #f8fafc;
+  --surface: #ffffff;
+  --cyan: #0e7490;
+  --cyan-soft: #ecfdff;
+  --success: #067647;
+  --success-soft: #ecfdf3;
+  --danger: #d92d20;
+  --danger-soft: #fff1f0;
+  --radius: 10px;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}

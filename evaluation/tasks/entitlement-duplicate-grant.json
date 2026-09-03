@@ -1,0 +1,24 @@
+{
+  "allowedPaths": [
+    "src/**",
+    "test/**"
+  ],
+  "expectedOutcome": "success",
+  "fixtureId": "entitlement-service",
+  "hiddenOracleHash": "4cb23ccf968f410c7846ab0d54bfae5814e3edcdd0c646153fe1e94a5e266aec",
+  "initialFixtureHash": "1ee13f12311d7ec737c200a19bee1dc19a1f59f7c986e9c55bfe8d14daa18d64",
+  "issue": "Make duplicate entitlement grants idempotent",
+  "protectedPrefixes": [
+    "evaluation/",
+    ".github/",
+    ".env"
+  ],
+  "recordingId": "entitlement-duplicate-grant-recording",
+  "schemaVersion": "1.0",
+  "taskId": "entitlement-duplicate-grant",
+  "trustedCheckIds": [
+    "unit",
+    "typecheck",
+    "policy"
+  ]
+}

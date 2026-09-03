@@ -1,0 +1,12 @@
+{
+  "name": "@mergepilot/evaluation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/report.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": { "@types/node": "26.4.1" }
+}

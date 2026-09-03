@@ -1,0 +1,11 @@
+.git
+.github
+.worktrees
+node_modules
+**/node_modules
+**/dist
+test-results
+playwright-report
+.env*
+docs/design/*.png
+docs/screenshots/*.png

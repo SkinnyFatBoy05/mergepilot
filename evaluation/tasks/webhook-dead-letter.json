@@ -1,0 +1,24 @@
+{
+  "allowedPaths": [
+    "src/**",
+    "test/**"
+  ],
+  "expectedOutcome": "success",
+  "fixtureId": "webhook-worker",
+  "hiddenOracleHash": "5b887560c1c706c887b860b2339d82a97a5084bc05bc4bafd0001b3c13f8fa23",
+  "initialFixtureHash": "06e32909f415897fa07804915c070b21e5532dad97585cf0e6f31c15047a9e64",
+  "issue": "Dead-letter exhausted deliveries",
+  "protectedPrefixes": [
+    "evaluation/",
+    ".github/",
+    ".env"
+  ],
+  "recordingId": "webhook-dead-letter-recording",
+  "schemaVersion": "1.0",
+  "taskId": "webhook-dead-letter",
+  "trustedCheckIds": [
+    "unit",
+    "typecheck",
+    "policy"
+  ]
+}

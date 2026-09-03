@@ -1,0 +1,5 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDataSource, type EvaluationEvidence } from "../lib/api.js";
+
+export function EvaluationPage() { const source = useDataSource(); const [evaluation, setEvaluation] = useState<EvaluationEvidence | null>(null); useEffect(() => { void source.getEvaluation().then(setEvaluation); }, [source]); if (!evaluation) return <main className="loading">Loading evaluation evidence…</main>; return <main className="content-page"><header className="page-heading"><div><h1>Evaluation evidence</h1><p>Twelve deterministic tasks across three fictional repositories.</p></div><Link to="/runs/demo-run">Back to run</Link></header><div className="score"><strong>{Math.round(evaluation.passRate * 100)}%</strong><span>task pass rate</span></div><dl className="evaluation-list"><div><dt>Tasks passed</dt><dd>{evaluation.passed} / {evaluation.total}</dd></div><div><dt>Unsafe actions blocked</dt><dd>{evaluation.policyBlocks}</dd></div><div><dt>Median duration</dt><dd>{evaluation.medianDurationSeconds}s</dd></div><div><dt>Fixtures</dt><dd>3 repositories</dd></div></dl></main>; }

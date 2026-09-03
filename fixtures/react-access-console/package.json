@@ -1,0 +1,1 @@
+{ "name": "@mergepilot-fixture/react-access-console", "private": true, "type": "module", "scripts": { "test": "node /app/node_modules/vitest/vitest.mjs run" } }

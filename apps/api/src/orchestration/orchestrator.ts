@@ -9,7 +9,6 @@ import {
   type ReleaseBundle,
   type Review,
   type Task,
-  type ToolName,
 } from "@mergepilot/contracts";
 import type { MergePilotRepository, StoredArtifact } from "../db/repository.js";
 import { sha256 } from "../domain/hash-chain.js";

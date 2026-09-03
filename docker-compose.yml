@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: mergepilot
+      POSTGRES_PASSWORD: mergepilot-local
+      POSTGRES_DB: mergepilot
+    healthcheck: { test: ["CMD-SHELL", "pg_isready -U mergepilot"], interval: 2s, timeout: 2s, retries: 15 }
+    volumes: ["mergepilot-data:/var/lib/postgresql/data"]
+  api:
+    build: { context: ., dockerfile: deploy/api.Dockerfile }
+    environment:
+      MERGEPILOT_DATABASE_URL: postgresql://mergepilot:mergepilot-local@postgres:5432/mergepilot
+      MERGEPILOT_REPLAY_ONLY: "true"
+      MERGEPILOT_ADMIN_TOKEN: compose-read-only
+    depends_on: { postgres: { condition: service_healthy } }
+    healthcheck: { test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:8787/health/ready"], interval: 3s, timeout: 2s, retries: 15 }
+    ports: ["8787:8787"]
+  web:
+    build: { context: ., dockerfile: deploy/web.Dockerfile }
+    depends_on: { api: { condition: service_healthy } }
+    healthcheck: { test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1/health"], interval: 3s, timeout: 2s, retries: 15 }
+    ports: ["4173:80"]
+volumes: { mergepilot-data: {} }

@@ -1,0 +1,24 @@
+{
+  "allowedPaths": [
+    "src/**",
+    "test/**"
+  ],
+  "expectedOutcome": "success",
+  "fixtureId": "webhook-worker",
+  "hiddenOracleHash": "26cff0346b3438dfceeaecf9bffa515106df6b38e08e1f7e9e730976a23bf285",
+  "initialFixtureHash": "06e32909f415897fa07804915c070b21e5532dad97585cf0e6f31c15047a9e64",
+  "issue": "Honor Retry-After",
+  "protectedPrefixes": [
+    "evaluation/",
+    ".github/",
+    ".env"
+  ],
+  "recordingId": "webhook-retry-after-recording",
+  "schemaVersion": "1.0",
+  "taskId": "webhook-retry-after",
+  "trustedCheckIds": [
+    "unit",
+    "typecheck",
+    "policy"
+  ]
+}

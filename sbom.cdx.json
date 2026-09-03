@@ -1,0 +1,186 @@
+{
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "bom-ref": "pkg:npm/%40mergepilot-fixture%2Fentitlement-service@0.0.0",
+      "name": "@mergepilot-fixture/entitlement-service",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "fixtures/entitlement-service/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot-fixture%2Fentitlement-service@0.0.0",
+      "type": "application",
+      "version": "0.0.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot-fixture%2Freact-access-console@0.0.0",
+      "name": "@mergepilot-fixture/react-access-console",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "fixtures/react-access-console/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot-fixture%2Freact-access-console@0.0.0",
+      "type": "application",
+      "version": "0.0.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot-fixture%2Fwebhook-worker@0.0.0",
+      "name": "@mergepilot-fixture/webhook-worker",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "fixtures/webhook-worker/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot-fixture%2Fwebhook-worker@0.0.0",
+      "type": "application",
+      "version": "0.0.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot%2Fapi@0.1.0",
+      "name": "@mergepilot/api",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "apps/api/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot%2Fapi@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot%2Fcontracts@0.1.0",
+      "name": "@mergepilot/contracts",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "packages/contracts/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot%2Fcontracts@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot%2Fevaluation@0.1.0",
+      "name": "@mergepilot/evaluation",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "packages/evaluation/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot%2Fevaluation@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot%2Fpolicy@0.1.0",
+      "name": "@mergepilot/policy",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "packages/policy/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot%2Fpolicy@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot%2Frepo-mcp@0.1.0",
+      "name": "@mergepilot/repo-mcp",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "apps/repo-mcp/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot%2Frepo-mcp@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot%2Frunner@0.1.0",
+      "name": "@mergepilot/runner",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "apps/runner/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot%2Frunner@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot%2Ftest-fixtures@0.1.0",
+      "name": "@mergepilot/test-fixtures",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "packages/test-fixtures/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot%2Ftest-fixtures@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/%40mergepilot%2Fweb@0.1.0",
+      "name": "@mergepilot/web",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "apps/web/package.json"
+        }
+      ],
+      "purl": "pkg:npm/%40mergepilot%2Fweb@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    {
+      "bom-ref": "pkg:npm/mergepilot@0.1.0",
+      "name": "mergepilot",
+      "properties": [
+        {
+          "name": "mergepilot:manifest",
+          "value": "package.json"
+        }
+      ],
+      "purl": "pkg:npm/mergepilot@0.1.0",
+      "type": "application",
+      "version": "0.1.0"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "name": "mergepilot",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    "properties": [
+      {
+        "name": "mergepilot:source-tree-sha256",
+        "value": "7118f366fc7f14da080700202f16301e192fec347bd23957e8fd36b87049510d"
+      },
+      {
+        "name": "mergepilot:lockfile-sha256",
+        "value": "a02ba0ab64f7d435bb2af79507f2e0b6429fd17eab4c17ec1c934add9ab2a38c"
+      },
+      {
+        "name": "mergepilot:evaluation-task-set-sha256",
+        "value": "fdc49b329c1581f04021306f12cb55786e16ef92eb61a14e802bf53f52e381f8"
+      }
+    ],
+    "timestamp": "2026-09-03T00:00:00.000Z"
+  },
+  "serialNumber": "urn:uuid:7118f366-fc7f-44da-8807-00202f16301e",
+  "specVersion": "1.6",
+  "version": 1
+}

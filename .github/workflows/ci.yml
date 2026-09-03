@@ -1,0 +1,50 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: mergepilot
+          POSTGRES_PASSWORD: mergepilot-ci
+          POSTGRES_DB: mergepilot
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U mergepilot" --health-interval 5s
+          --health-timeout 3s --health-retries 20
+    env:
+      SOURCE_DATE_EPOCH: "1788393600"
+      MERGEPILOT_TEST_DATABASE_URL: postgresql://mergepilot:mergepilot-ci@127.0.0.1:5432/mergepilot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 11.19.0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test:unit
+      - run: pnpm test:integration
+      - run: docker build -f deploy/runner.Dockerfile -t mergepilot-runner:test .
+      - run: MERGEPILOT_RUNNER_IMAGE=mergepilot-runner:test pnpm test:integration
+      - run: pnpm evaluate -- --provider recorded --output evaluation/reports/latest.json
+      - run: pnpm tsx scripts/build-replay.ts --output apps/web/public/replay/latest.json
+      - run: pnpm tsx scripts/run-benchmark.ts --output reports/benchmark.json
+      - run: pnpm --filter @mergepilot/web build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - run: pnpm tsx scripts/generate-sbom.ts
+      - run: pnpm run audit
+      - run: docker compose up -d --build --wait
+      - run: pnpm tsx scripts/smoke-compose.ts
+      - if: always()
+        run: docker compose down -v
+      - run: pnpm audit --audit-level high
+      - run: git diff --exit-code -- evaluation/reports/latest.json apps/web/public/replay/latest.json sbom.cdx.json reports/completion-audit.json

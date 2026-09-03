@@ -1,0 +1,24 @@
+{
+  "allowedPaths": [
+    "src/**",
+    "test/**"
+  ],
+  "expectedOutcome": "success",
+  "fixtureId": "entitlement-service",
+  "hiddenOracleHash": "4d86b0c729a0bbf77bb5a057daf0ad925d633de1961af31e1e7d8972a596d99c",
+  "initialFixtureHash": "1ee13f12311d7ec737c200a19bee1dc19a1f59f7c986e9c55bfe8d14daa18d64",
+  "issue": "Emit an entitlement audit event",
+  "protectedPrefixes": [
+    "evaluation/",
+    ".github/",
+    ".env"
+  ],
+  "recordingId": "entitlement-audit-event-recording",
+  "schemaVersion": "1.0",
+  "taskId": "entitlement-audit-event",
+  "trustedCheckIds": [
+    "unit",
+    "typecheck",
+    "policy"
+  ]
+}

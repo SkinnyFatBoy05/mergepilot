@@ -1,0 +1,24 @@
+{
+  "allowedPaths": [
+    "src/**",
+    "test/**"
+  ],
+  "expectedOutcome": "success",
+  "fixtureId": "webhook-worker",
+  "hiddenOracleHash": "488be5d7526990e4d1f8915bf7a804595f8e31f772a69e476f64c599545ac3e7",
+  "initialFixtureHash": "06e32909f415897fa07804915c070b21e5532dad97585cf0e6f31c15047a9e64",
+  "issue": "Make webhook retries idempotent",
+  "protectedPrefixes": [
+    "evaluation/",
+    ".github/",
+    ".env"
+  ],
+  "recordingId": "webhook-idempotent-retry-recording",
+  "schemaVersion": "1.0",
+  "taskId": "webhook-idempotent-retry",
+  "trustedCheckIds": [
+    "unit",
+    "typecheck",
+    "policy"
+  ]
+}

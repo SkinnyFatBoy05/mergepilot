@@ -12,6 +12,7 @@ export interface ServerDependencies {
   readonly orchestrator: MergePilotOrchestrator;
   readonly adminToken: string;
   readonly latestEvaluation: () => Promise<unknown>;
+  readonly replayOnly?: boolean;
 }
 
 const paramsSchema = z.object({ taskId: z.uuid() });
@@ -25,6 +26,9 @@ export function buildServer(dependencies: ServerDependencies): FastifyInstance {
   const app = Fastify({ logger: false, bodyLimit: 64 * 1024 });
   void app.register(cors, { origin: false });
   const admin = requireAdmin(dependencies.adminToken);
+  const mutationGuard = dependencies.replayOnly
+    ? async (_request: unknown, reply: { code: (status: number) => { send: (body: unknown) => unknown } }) => reply.code(403).send({ type: "https://mergepilot.dev/problems/replay-only", title: "Recorded replay is read-only", status: 403 })
+    : admin;
   const actor = { id: "console-reviewer", displayName: "Console reviewer", type: "human" as const };
 
   app.setErrorHandler((error, _request, reply) => {
@@ -40,7 +44,7 @@ export function buildServer(dependencies: ServerDependencies): FastifyInstance {
     });
   });
 
-  app.post("/api/v1/tasks", { preHandler: admin }, async (request, reply) => {
+  app.post("/api/v1/tasks", { preHandler: mutationGuard }, async (request, reply) => {
     const task = await dependencies.orchestrator.createTask(createTaskInputSchema.parse(request.body));
     return reply.code(201).send(task);
   });
@@ -62,13 +66,13 @@ export function buildServer(dependencies: ServerDependencies): FastifyInstance {
       events: await dependencies.repository.listEventsAfter(taskId, 0),
     };
   });
-  app.post("/api/v1/tasks/:taskId/plan", { preHandler: admin }, async (request) => dependencies.orchestrator.plan(paramsSchema.parse(request.params).taskId));
-  app.post("/api/v1/tasks/:taskId/plan-decision", { preHandler: admin }, async (request) => {
+  app.post("/api/v1/tasks/:taskId/plan", { preHandler: mutationGuard }, async (request) => dependencies.orchestrator.plan(paramsSchema.parse(request.params).taskId));
+  app.post("/api/v1/tasks/:taskId/plan-decision", { preHandler: mutationGuard }, async (request) => {
     const input = decisionSchema.parse(request.body);
     return dependencies.orchestrator.decidePlan(paramsSchema.parse(request.params).taskId, { ...input, actor });
   });
-  app.post("/api/v1/tasks/:taskId/run", { preHandler: admin }, async (request) => dependencies.orchestrator.execute(paramsSchema.parse(request.params).taskId));
-  app.post("/api/v1/tasks/:taskId/release-decision", { preHandler: admin }, async (request) => {
+  app.post("/api/v1/tasks/:taskId/run", { preHandler: mutationGuard }, async (request) => dependencies.orchestrator.execute(paramsSchema.parse(request.params).taskId));
+  app.post("/api/v1/tasks/:taskId/release-decision", { preHandler: mutationGuard }, async (request) => {
     const input = decisionSchema.parse(request.body);
     return dependencies.orchestrator.decideRelease(paramsSchema.parse(request.params).taskId, { ...input, actor });
   });

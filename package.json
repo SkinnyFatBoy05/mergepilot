@@ -19,6 +19,7 @@
     "audit": "tsx scripts/completion-audit.ts"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
     "@playwright/test": "1.62.1",
     "oxlint": "1.81.0",
     "tsx": "4.23.13",

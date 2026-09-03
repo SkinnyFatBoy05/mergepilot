@@ -1,0 +1,24 @@
+{
+  "allowedPaths": [
+    "src/**",
+    "test/**"
+  ],
+  "expectedOutcome": "success",
+  "fixtureId": "react-access-console",
+  "hiddenOracleHash": "d2c0ea15cabdca8013aa08d119cd935f1cd24b6b534cc11716ba2257ac049fb3",
+  "initialFixtureHash": "439c15479262b6b6750e04dd8d4cc210774ecda30ab51223f0b6ac3cce9d3ffa",
+  "issue": "Add keyboard dialog behavior",
+  "protectedPrefixes": [
+    "evaluation/",
+    ".github/",
+    ".env"
+  ],
+  "recordingId": "react-keyboard-dialog-recording",
+  "schemaVersion": "1.0",
+  "taskId": "react-keyboard-dialog",
+  "trustedCheckIds": [
+    "unit",
+    "typecheck",
+    "policy"
+  ]
+}
