@@ -1,0 +1,28 @@
+{
+  "name": "mergepilot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "oxlint .",
+    "test": "vitest run --workspace vitest.workspace.ts",
+    "test:unit": "vitest run --workspace vitest.workspace.ts --project unit",
+    "test:integration": "vitest run --workspace vitest.workspace.ts --project integration",
+    "test:e2e": "playwright test",
+    "evaluate": "tsx packages/evaluation/src/cli.ts",
+    "audit": "tsx scripts/completion-audit.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "oxlint": "1.81.0",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2",
+    "vitest": "4.1.11"
+  }
+}
