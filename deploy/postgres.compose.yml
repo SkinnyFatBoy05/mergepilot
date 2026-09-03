@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:18.1-alpine
+    environment:
+      POSTGRES_USER: mergepilot
+      POSTGRES_PASSWORD: mergepilot
+      POSTGRES_DB: mergepilot_test
+    ports:
+      - "55432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mergepilot -d mergepilot_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+    tmpfs:
+      - /var/lib/postgresql/data
